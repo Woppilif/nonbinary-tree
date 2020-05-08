@@ -1,0 +1,17 @@
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.exe.config
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.exe
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.pdb
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.csprojAssemblyReference.cache
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary_Tree.Form1.resources
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary_Tree.Properties.Resources.resources
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.csproj.GenerateResource.cache
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.csproj.CoreCompileInputs.cache
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.exe
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.pdb
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\ListTreesLibrary.dll
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\ListTreesLibrary.pdb
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.csproj.CopyComplete
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.exe.manifest
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.application
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.exe.manifest
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.application
