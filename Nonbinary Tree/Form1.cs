@@ -1,4 +1,5 @@
 ﻿using ListTreesLibrary;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -89,7 +90,7 @@ namespace Nonbinary_Tree
                 return;
             }
 
-            if (vs.Search(new FileManager(newValue.Text, false)) != null)
+            if (vs.Search(new FileManager(newValue.Text)) != null)
             {
                 return;
             }
@@ -98,36 +99,44 @@ namespace Nonbinary_Tree
             {
                 if (treeView1.Nodes.Count == 0)
                 {
+                    var file = new FileManager(newValue.Text);
                     vs.Add(
-                        new FileManager(newValue.Text),
-                        new FileManager(newValue.Text)
+                        file,
+                        file
                         );
+                    file.CreateFile();
                 }
                 else
                 {
-                    var res = vs.Search(new FileManager(treeView1.SelectedNode.Text, false));
+                    var res = vs.Search(new FileManager(treeView1.SelectedNode.Text));
+                    var file = new FileManager(newValue.Text);
                     vs.Add(
-                        new FileManager(newValue.Text),
+                        file,
                         res
                         );
+                    file.CreateFile();
                 }
             }
             else if (dataGridView1.SelectedCells != null && dataGridView1.SelectedCells.Count != 0)
             {
                 if (dataGridView1.Rows.Count == 1)
                 {
+                    var file = new FileManager(newValue.Text);
                     vs.Add(
-                        new FileManager(newValue.Text),
-                        new FileManager(newValue.Text)
+                        file,
+                        file
                         );
+                    file.CreateFile();
                 }
                 else
                 {
-                    var res = vs.Search(new FileManager(dataGridView1.SelectedCells[0].Value.ToString(), false));
+                    var res = vs.Search(new FileManager(dataGridView1.SelectedCells[0].Value.ToString()));
+                    var file = new FileManager(newValue.Text);
                     vs.Add(
-                        new FileManager(newValue.Text),
+                        file,
                         res
                         );
+                    file.CreateFile();
                 }
             }
             else
@@ -195,7 +204,7 @@ namespace Nonbinary_Tree
         {
             if (treeView1.SelectedNode != null)
             {
-                var res = vs.Search(new FileManager(treeView1.SelectedNode.Text, false));
+                var res = vs.Search(new FileManager(treeView1.SelectedNode.Text));
                 if (res == null)
                 {
                     return;
@@ -208,7 +217,7 @@ namespace Nonbinary_Tree
             }
             else if (dataGridView1.SelectedCells != null && dataGridView1.SelectedCells.Count != 0)
             {
-                var res = vs.Search(new FileManager(dataGridView1.SelectedCells[0].Value.ToString(), false));
+                var res = vs.Search(new FileManager(dataGridView1.SelectedCells[0].Value.ToString()));
                 if (res == null)
                 {
                     return;
@@ -238,24 +247,13 @@ namespace Nonbinary_Tree
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
+            var tree = JsonConvert.SerializeObject(this.vs);
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter sw = new StreamWriter(saveFileDialog1.OpenFile()))
                 {
-                    foreach (var item in vs.vs)
-                    {
-                        if (item != null)
-                        {
-                            sw.WriteLine($"p#{item.Value.ToString()}");
-                            foreach (var child in item.Children)
-                            {
-                                if (child != null)
-                                {
-                                    sw.WriteLine($"c#{child.Value.ToString()}");
-                                }
-                            }
-                        }
-                    }
+
+                    sw.Write(tree);
                 }
             }
         }
@@ -287,35 +285,10 @@ namespace Nonbinary_Tree
                     string currentParent = "";
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
-                        string line;
-                        bool create;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            string[] tempLine = line.Split('#');
-                            create = true;
-                            if (tempLine[0] == "p")
-                            {
-                                currentParent = tempLine[1];
-                                if (vs.vs.Value == null)
-                                {
-                                    if (new FileManager(currentParent, false).FileExists() == true)
-                                    {
-                                        create = false;
-                                    }
-                                    vs.Add(new FileManager(currentParent, create), new FileManager(currentParent, create));
-                                }
-                            }
-                            if (tempLine[0] == "c")
-                            {
-                                if (new FileManager(tempLine[1], false).FileExists() == true)
-                                {
-                                    create = false;
-                                }
-                                vs.Add(new FileManager(tempLine[1], create), new FileManager(currentParent, false));
-                            }
-
-                        }
+                        vs = JsonConvert.DeserializeObject<Tree<FileManager>>(reader.ReadToEnd());
+                        vs.SetDeletable(new FileManager());
                     }
+                    CheckFiles();
                     FillTree();
                     FillGrid();
                 }
@@ -330,7 +303,7 @@ namespace Nonbinary_Tree
         /// <param name="e"></param>
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
-            var res = vs.Search(new FileManager(treeView1.SelectedNode.Text, false));
+            var res = vs.Search(new FileManager(treeView1.SelectedNode.Text));
             if (res != null)
             {
                 MessageBox.Show(res.Read());
@@ -348,7 +321,7 @@ namespace Nonbinary_Tree
             {
                 return;
             }
-            var res = vs.Search(new FileManager(newValue.Text, false));
+            var res = vs.Search(new FileManager(newValue.Text));
             if (res != null)
             {
                 MessageBox.Show(res.Read(),"Поиск успешен!");
@@ -356,6 +329,28 @@ namespace Nonbinary_Tree
             else
             {
                 MessageBox.Show("Ничего не найдено...", ":(");
+            }
+        }
+
+        private void CheckFiles()
+        {
+            foreach (var item in vs.vs)
+            {
+                if(!item.Value.FileExists())
+                {
+                    item.Value.CreateFile();
+                }
+                foreach (var item2 in item.Children)
+                {
+                    if (item2 != null)
+                    {
+                        if (!item2.Value.FileExists())
+                        {
+                            item2.Value.CreateFile();
+                        }
+                    }
+                }
+
             }
         }
     }

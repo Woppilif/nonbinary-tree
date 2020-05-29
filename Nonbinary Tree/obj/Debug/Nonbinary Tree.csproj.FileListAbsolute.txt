@@ -15,3 +15,5 @@ C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tr
 C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Nonbinary Tree.application
 C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.exe.manifest
 C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\obj\Debug\Nonbinary Tree.application
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Newtonsoft.Json.dll
+C:\Users\woppi\source\repos\Nonbinary Tree\Nonbinary Tree\bin\Debug\Newtonsoft.Json.xml

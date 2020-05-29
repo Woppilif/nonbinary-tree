@@ -1,12 +1,12 @@
 namespace Nonbinary_Tree
 {
-	class Class1
+	class Delegate
 	{
 		public string ClassName { get; set; }
 
-		public Class1()
+		public Delegate()
 		{
-			this.ClassName = "Class1";
+			this.ClassName = "Delegate";
 		}
 	}
 }

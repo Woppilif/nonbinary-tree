@@ -1,12 +1,12 @@
 namespace Nonbinary_Tree
 {
-	class Class2
+	class Queryable
 	{
 		public string ClassName { get; set; }
 
-		public Class2()
+		public Queryable()
 		{
-			this.ClassName = "Class2";
+			this.ClassName = "Queryable";
 		}
 	}
 }

@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Nonbinary Tree.exe.manifest" size="4323">
+    <dependentAssembly dependencyType="install" codebase="Nonbinary Tree.exe.manifest" size="5008">
       <assemblyIdentity name="Nonbinary Tree.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5lEMPMrwMPUL322yLhrzl/cBGrbqFroo5qz/ElpTcVo=</dsig:DigestValue>
+        <dsig:DigestValue>93PUiVcZPA/Z0hm1t13N+V5wwJaBfX3SOLYBIF4OmQQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

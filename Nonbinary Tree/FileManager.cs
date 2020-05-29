@@ -1,19 +1,17 @@
 ﻿using ListTreesLibrary;
+using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 namespace Nonbinary_Tree
 {
     public class FileManager : IDeletable<FileManager>
     {
+        [JsonProperty]
         private string FileName;
-        public FileStream MyProperty { get; private set; }
-        public FileManager(string name, bool create = true)
+
+        public FileManager(string name)
         {
             FileName = name;
-            if (create == true)
-            {
-                MyProperty = CreateFile();
-            }
         }
 
         public FileManager()
@@ -41,7 +39,7 @@ namespace Nonbinary_Tree
             File.Delete(FileName + ".cs");
         }
 
-        private FileStream CreateFile()
+        public FileStream CreateFile()
         {
 
             using (FileStream fs = File.Create(FileName + ".cs"))
